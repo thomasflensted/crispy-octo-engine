@@ -1,7 +1,7 @@
 import Button from "../elements/Button";
 import Modal from "../elements/Modal";
 import Input from "../form/Input";
-import Note from "../Note";
+import Note from "./Note";
 
 type Props = {
   isOpen: boolean;

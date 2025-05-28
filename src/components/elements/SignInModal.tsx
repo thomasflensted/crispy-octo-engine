@@ -2,7 +2,7 @@ import Modal from "./Modal";
 import Input from "../form/Input";
 import Button from "./Button";
 import { FaApple, FaGoogle } from "react-icons/fa";
-import Note from "../Note";
+import Note from "../note/Note";
 
 type Props = {
   isOpen: boolean;
