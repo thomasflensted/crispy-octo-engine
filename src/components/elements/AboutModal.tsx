@@ -1,6 +1,6 @@
 import Modal from "./Modal";
-import Note from "../note/Note";
 import Button from "./Button";
+import Note from "../Note";
 
 type Props = {
   isOpen: boolean;
@@ -10,7 +10,14 @@ type Props = {
 const AboutModal = ({ isOpen, setIsOpen }: Props) => {
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-      <Note heading="About" hideOptions content={placeholder}>
+      <Note heading="About" hideOptions>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis
+          vitae earum amet recusandae eum ullam explicabo? Molestias error
+          accusantium deserunt debitis animi dolor, ducimus odit veniam
+          consequuntur distinctio dolore pariatur, doloribus assumenda deleniti,
+          quia necessitatibus commodi fuga ipsam enim dolores!
+        </p>
         <div className="mt-2">
           <Button label="Close" onClick={() => setIsOpen(false)} />
         </div>
@@ -19,6 +26,3 @@ const AboutModal = ({ isOpen, setIsOpen }: Props) => {
   );
 };
 export default AboutModal;
-
-const placeholder =
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, enim explicabo modi maiores laboriosam animi itaque, veniam reiciendis officiis obcaecati, vero iusto excepturi ex dolorum atque cum a sunt dolore officia illo quidem. Veniam voluptas vero provident dolores alias odio.";

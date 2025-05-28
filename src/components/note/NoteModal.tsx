@@ -1,7 +1,7 @@
 import Button from "../elements/Button";
 import Modal from "../elements/Modal";
 import Input from "../form/Input";
-import Note from "./Note";
+import Note from "../Note";
 
 type Props = {
   isOpen: boolean;
@@ -20,9 +20,12 @@ const NoteModal = ({ isOpen, setIsOpen }: Props) => {
             <Input id="content" type="textarea" label="Content" />
             <label className="text-xs block">
               <span className="mb-0.5 block">Color</span>
-              <div className="flex rounded justify-between h-10 ">
+              <div className="flex gap-2 h-10 justify-between">
                 {colors.map((color) => (
-                  <div key={color} className={`${color} ${color === "bg-blue" ? "shadow border" : ""} rounded-full h-full aspect-square`}></div>
+                  <div
+                    key={color}
+                    className={`${color} ${color === "bg-green" ? "border shadow" : ""} rounded-full h-full aspect-square`}
+                  />
                 ))}
               </div>
             </label>
