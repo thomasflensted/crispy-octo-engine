@@ -2,4 +2,10 @@
 
 @theme {
   --shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.8);
+  --shadow-faded: 3px 3px 0px 0px rgba(0, 0, 0, 0.2);
+  --color-green: #c9e4de;
+  --color-yellow: #faedcb;
+  --color-blue: #c6def1;
+  --color-red: #ffd2d2;
+  --color-gray: #ecf0f1;
 }
