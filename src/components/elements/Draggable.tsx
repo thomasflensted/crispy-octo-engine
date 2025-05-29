@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import type { MouseEvent as ReactMouseEvent } from "react";
-import { BsTextareaResize } from "react-icons/bs";
 
 interface Position {
   x: number;
@@ -13,10 +12,7 @@ interface DraggableProps {
   boundaryPadding?: number;
 }
 
-const Draggable = ({
-  initialPosition = { x: 400, y: 400 },
-  children,
-}: DraggableProps) => {
+const Draggable = ({ initialPosition = { x: 400, y: 400 }, children }: DraggableProps) => {
   const [position, setPosition] = useState<Position>(initialPosition);
   const [isDragging, setIsDragging] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
@@ -46,10 +42,7 @@ const Draggable = ({
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
       if (!isDragging) return;
-      const newPosition = keepInBounds(
-        clientX - dragOffset.current.x,
-        clientY - dragOffset.current.y
-      );
+      const newPosition = keepInBounds(clientX - dragOffset.current.x, clientY - dragOffset.current.y);
       setPosition(newPosition);
     };
 
@@ -67,19 +60,9 @@ const Draggable = ({
     <div
       ref={elementRef}
       onMouseDown={handleMouseDown}
-      className={`absolute cursor-grab ${
-        isDragging ? "cursor-grabbing z-0" : ""
-      }`}
-      style={{
-        transform: `translate(${position.x}px, ${position.y}px)`,
-        userSelect: "none",
-        touchAction: "none",
-      }}
-    >
-      <div className=" relative">
-        {children}
-        <BsTextareaResize className="absolute right-1 bottom-1 text-sm" />
-      </div>
+      className={`w-1/3 absolute cursor-grab ${isDragging ? "cursor-grabbing z-0" : ""}`}
+      style={{ transform: `translate(${position.x}px, ${position.y}px)` }}>
+      {children}
     </div>
   );
 };

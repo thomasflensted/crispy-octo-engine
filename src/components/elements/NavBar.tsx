@@ -16,7 +16,7 @@ const NavBar = () => {
       <AboutModal isOpen={aboutModalIsOpen} setIsOpen={setAboutModalIsOpen} />
       <SignInModal isOpen={signInIsOpen} setIsOpen={setSignInIsOpen} />
       <NoteModal isOpen={newNoteIsOpen} setIsOpen={setNewNoteIsOpen} />
-      <nav className="flex flex-col gap-2 mt-4 mx-4">
+      <nav className="flex flex-col gap-2 mt-4 mx-4 z-10">
         <div className="bg-white w-full shadow border rounded">
           <ul className="flex items-center justify-between h-full px-4 py-2">
             <li>
