@@ -3,10 +3,16 @@ import { AnimatePresence, motion } from "framer-motion";
 type Props = {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
+  onClose?: () => void;
   children?: React.ReactNode;
 };
 
-const Modal = ({ isOpen, setIsOpen, children }: Props) => {
+const Modal = ({ isOpen, setIsOpen, children, onClose }: Props) => {
+  const handleClose = () => {
+    setIsOpen(false);
+    if (onClose) onClose();
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -14,7 +20,7 @@ const Modal = ({ isOpen, setIsOpen, children }: Props) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          onClick={() => setIsOpen(false)}
+          onClick={handleClose}
           className="fixed inset-0 w-full h-full bg-black/5 backdrop-blur-xs flex justify-center items-center">
           <motion.div
             initial={{ scale: 0.95, y: 20, opacity: 0 }}

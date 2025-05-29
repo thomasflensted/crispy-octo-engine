@@ -15,7 +15,7 @@ type Props = {
 };
 
 const NoteModal = ({ isOpen, setIsOpen }: Props) => {
-  const { register, formState, handleSubmit, watch, setValue } = useForm({
+  const { register, formState, handleSubmit, watch, setValue, reset } = useForm({
     resolver: zodResolver(NoteSchema),
     defaultValues: { color: "green" },
   });
@@ -25,7 +25,7 @@ const NoteModal = ({ isOpen, setIsOpen }: Props) => {
   const handleColorChange = (color: Color) => setValue("color", color);
 
   return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
+    <Modal isOpen={isOpen} setIsOpen={setIsOpen} onClose={reset}>
       <Note heading="New note" hideOptions backgroundColor={backgroundColor}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex flex-col gap-3">
