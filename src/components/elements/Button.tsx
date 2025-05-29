@@ -1,8 +1,8 @@
-import type { ButtonHTMLAttributes, MouseEvent, ReactNode } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 type Props = {
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
   theme?: "default" | "warning";
   icon?: ReactNode;
   disabled?: boolean;
@@ -15,16 +15,12 @@ const Button = ({ label, onClick, disabled, icon, theme = "default", type = "but
   const defaultStyle = theme === "default" ? "bg-white text-black hover:bg-gray-100" : "";
   const disabledStyle = disabled ? "text-gray-200" : "";
 
-  const handleClick = (e: MouseEvent) => {
-    e.preventDefault();
-    onClick();
-  };
-
   return (
-    <button type={type} onClick={handleClick} className={`${disabledStyle} ${commonStyles} ${defaultStyle} ${warningStyle}`}>
+    <button type={type} onClick={onClick} className={`${disabledStyle} ${commonStyles} ${defaultStyle} ${warningStyle}`}>
       {icon && icon}
       {label}
     </button>
   );
 };
+
 export default Button;

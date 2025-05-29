@@ -1,33 +1,31 @@
-import type { HTMLInputTypeAttribute, ReactNode } from "react";
+import type { HTMLInputTypeAttribute } from "react";
+import { type UseFormRegisterReturn } from "react-hook-form";
+import InputContainer from "./InputContainer";
 
-type Props = {
-  id: string;
+type Props<T extends object> = {
+  id: keyof T extends string ? keyof T : never;
   placeholder?: string;
   type?: HTMLInputTypeAttribute | "textarea";
   label: string;
-};
+  error?: string;
+} & UseFormRegisterReturn;
 
-const Input = ({ id, placeholder, label, type = "text" }: Props) => {
+const Input = <T extends object>({ id, placeholder, type, label, error, ...registerProps }: Props<T>) => {
   const inputClasses = "block w-full border shadow rounded py-2 px-3 font-light text-sm outline-none placeholder:text-gray-400 resize-none";
-  const Container = ({ children }: { children: ReactNode }) => (
-    <label className="text-xs block" htmlFor={id}>
-      <span className="mb-0.5 block">{label}</span>
-      {children}
-    </label>
-  );
 
   if (type === "textarea") {
     return (
-      <Container>
-        <textarea id={id} placeholder={placeholder} className={inputClasses} rows={5} />
-      </Container>
+      <InputContainer id={id} label={label} error={error}>
+        <textarea {...registerProps} id={id} placeholder={placeholder} className={inputClasses} rows={5} />
+      </InputContainer>
     );
   }
 
   return (
-    <Container>
-      <input id={id} placeholder={placeholder} className={inputClasses} type={type} />
-    </Container>
+    <InputContainer id={id} label={label} error={error}>
+      <input {...registerProps} id={id} placeholder={placeholder} className={inputClasses} type={type} />
+    </InputContainer>
   );
 };
+
 export default Input;
