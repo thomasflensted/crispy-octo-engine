@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useRef } from "react";
 import { useOnClickOutside } from "usehooks-ts";
-import { useMenuPosition } from "../../hooks/useMenuPosition";
+import { getMenuPosition } from "../../utils/getMenuPosition";
 
 type Props = {
   isVisible: boolean;
@@ -12,7 +12,7 @@ type Props = {
 const NoteMenu = ({ isVisible, setIsVisible, mousePosition }: Props) => {
   const ref = useRef(null!);
   useOnClickOutside(ref, () => setIsVisible(false));
-  const position = useMenuPosition(mousePosition);
+  const position = getMenuPosition(mousePosition);
   const listClasses = "w-full px-2 py-1 hover:bg-gray-100 rounded text-xs font-normal cursor-pointer whitespace-nowrap transition duration-200";
   const separatorClasses = "w-11/12 mx-auto border-b border-black/15";
 

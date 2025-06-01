@@ -16,7 +16,7 @@ const NavBar = () => {
       <AboutModal isOpen={aboutModalIsOpen} setIsOpen={setAboutModalIsOpen} />
       <SignInModal isOpen={signInIsOpen} setIsOpen={setSignInIsOpen} />
       <NoteModal isOpen={newNoteIsOpen} setIsOpen={setNewNoteIsOpen} />
-      <nav className="flex flex-col gap-2 mt-4 mx-4 z-10">
+      <nav className="flex flex-col gap-2 mt-4 mx-4 z-10 select-none">
         <div className="bg-white w-full shadow border rounded">
           <ul className="flex items-center justify-between h-full px-4 py-2">
             <li>
@@ -44,12 +44,7 @@ const NavBar = () => {
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               className="h-10 rounded aspect-square shadow border bg-white flex justify-center items-center cursor-pointer">
-              <motion.div
-                initial={false}
-                animate={{
-                  rotate: isHovered ? 90 : 0,
-                  scale: isHovered ? 1.2 : 1,
-                }}>
+              <motion.div initial={false} animate={{ rotate: isHovered ? 90 : 0, scale: isHovered ? 1.2 : 1 }}>
                 <FaPlus />
               </motion.div>
             </button>

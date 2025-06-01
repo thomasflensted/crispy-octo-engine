@@ -32,10 +32,10 @@ const Note = ({ heading, hideOptions, children, backgroundColor = noteColors.gre
             <NoteMenu mousePosition={mousePosition} setIsVisible={setShowMenu} isVisible={showMenu} />
           </div>
         )}
-        <h3 className="">{heading}</h3>
+        <h3 className="select-none">{heading}</h3>
         {!hideOptions && <FaEdit onClick={handleEditClick} className="text-base" />}
       </div>
-      <div className="p-4 text-sm">{children}</div>
+      <div className="p-4 text-sm select-none">{children}</div>
     </div>
   );
 };
